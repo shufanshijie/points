@@ -9,9 +9,19 @@ public class PointsDaoFactory {
 	
 	private PointsDao pointsDao;
 	
+	private static PointsDaoFactory factory;
+	
+	private PointsDaoFactory(){}
+	
 	public static PointsDaoFactory getInstance(){
-		
-		return null;
+		if(factory == null){
+			synchronized (PointsDaoFactory.class) {
+				if(factory == null){
+					factory = new PointsDaoFactory();
+				}
+			}
+		}
+		return factory;
 	}
 
 	public PointsDao getPointsDao() {

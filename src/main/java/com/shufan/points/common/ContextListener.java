@@ -101,7 +101,8 @@ public class ContextListener implements ServletContextListener {
 			throw new RuntimeException(e);
 		}
 		String[] configNames = new String[]{
-				"SYS.xml","SYSCACHE.xml","SYSORGA.xml","SYSROLE.xml","SYSOPERATOR.xml","SYSUSERROLE.xml","T_POINTS_POINTSDETAIL.xml"};
+				"SYS.xml","SYSCACHE.xml","SYSORGA.xml","SYSROLE.xml","SYSOPERATOR.xml","SYSUSERROLE.xml"
+				,"T_POINTS_POINTSDETAIL.xml","T_POINTS_TOTALPOINTS.xml"};
 		for (String configName:configNames) {
 			URL url = ContextListener.class.getClassLoader().getResource(configName);
 			if (url==null)

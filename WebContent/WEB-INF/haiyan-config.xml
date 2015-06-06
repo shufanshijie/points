@@ -103,7 +103,8 @@
 		<!-- -->
 		<jdbcURL name="MYSQL" dbType="mysql" driver="com.mysql.jdbc.Driver" 
 			url="jdbc:mysql://localhost:3306/hyv3?useUnicode=true&amp;characterEncoding=UTF-8" username="root" password="root" dbcp="true"/>
-			
+		<jdbcURL name="POINTS" dbType="mysql" driver="com.mysql.jdbc.Driver" 
+			url="jdbc:mysql://localhost:3306/points?useUnicode=true&amp;characterEncoding=UTF-8" username="root" password="root" dbcp="true"/>
 		<jdbcURL name="ORACLE" dbType="oracle" driver="oracle.jdbc.driver.OracleDriver" 
 			url="jdbc:oracle:thin:@1.1.2.17:1521:hxwldev" username="cqoa" password="cqoa" dbcp="true"/>
 		<jdbcURL name="SQLSERVER" dbType="sqlserver" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" 

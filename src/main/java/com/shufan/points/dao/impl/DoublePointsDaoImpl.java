@@ -17,8 +17,11 @@ public class DoublePointsDaoImpl extends AbstractPointsDaoImpl {
 	 */
 	@Override
 	public int computePoints(String userId, IDBRecord orderForm) {
-		// TODO Auto-generated method stub
-		return 0;
+		int points = orderForm.getInteger("ORDERPOINTS");//指定积分
+		if(points != 0)
+			return points;
+		points = orderForm.getInteger("TOTALPRICE") * 2;//订单总额
+		return points;
 	}
 
 }

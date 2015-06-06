@@ -35,5 +35,10 @@
 			<component type="date" colspan="3" readOnly="true"/>
 			<queryCondition type="region"/>
 		</field>
+		<queryFilter>
+			<pluggedFilter><![CDATA[
+				order by t_1.POINTSDATE desc
+			]]></pluggedFilter>
+		</queryFilter>
 	</table>
 </Haiyan>
