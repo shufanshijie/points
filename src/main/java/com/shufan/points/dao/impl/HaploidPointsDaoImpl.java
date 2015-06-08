@@ -1,8 +1,8 @@
 package com.shufan.points.dao.impl;
 
 import haiyan.common.intf.database.orm.IDBRecord;
+import haiyan.common.intf.session.IContext;
 
-import com.shufan.points.dao.AbstractPointsDaoImpl;
 
 /**
  * 单倍积分策略dao实现
@@ -11,6 +11,10 @@ import com.shufan.points.dao.AbstractPointsDaoImpl;
  *
  */
 public class HaploidPointsDaoImpl extends AbstractPointsDaoImpl {
+
+	public HaploidPointsDaoImpl(IContext context) {
+		super(context);
+	}
 
 	/**
 	 * 根据订单信息计算累计的积分

@@ -1,4 +1,4 @@
-package com.shufan.points.dao;
+package com.shufan.points.dao.impl;
 
 import haiyan.common.CloseUtil;
 import haiyan.common.exception.Warning;
@@ -11,7 +11,6 @@ import haiyan.config.intf.database.ITableDBManager;
 import haiyan.config.intf.session.ITableDBContext;
 import haiyan.config.util.ConfigUtil;
 import haiyan.orm.database.DBContextFactory;
-import haiyan.orm.database.DBRecord;
 import haiyan.orm.database.sql.SQLDBFilter;
 
 import java.sql.Date;

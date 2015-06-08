@@ -13,15 +13,16 @@
 	<mvc:annotation-driven>
 	</mvc:annotation-driven>
 	<!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 需要更改 -->
-	<context:component-scan base-package= "com.shufan.points.conntroller" >
+	<context:component-scan base-package= "com.shufan.points.controller" >
 	</context:component-scan>
 
 	<bean class= "org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
     
-	
+	<!--
 	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views" />
 	</bean>
+	-->
 	<bean id="viewResolver" class="com.shufan.points.viewresolver.MultiViewResolver">
 		<property name="resolvers">
 			<map>
@@ -38,11 +39,12 @@
 				<entry key="vm">
 					<bean id="vmViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">  
                         <property name="cache" value="false"/>  
-                        <property name="prefix" value="/"/>  
+                        <property name="prefix" value="/"/>
                         <property name="suffix" value=".vm"/>
                         <property name="contentType"><value>text/html;charset=UTF-8</value></property>
                     </bean>  
 				</entry>
+				<!--
 				<entry key="xml">
 					<bean class="org.springframework.web.servlet.view.XmlViewResolver">
 						<property name="location">
@@ -50,6 +52,7 @@
 						</property>
 					</bean>
 				</entry>
+				-->
 			</map>
 		</property>
 	</bean>
@@ -57,9 +60,9 @@
 	<!-- velocity环境配置 -->  
     <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">  
         <!-- velocity配置文件路径 -->  
-        <property name="configLocation" value="/WEB-INF/classes/velocity.properties"/>  
+        <property name="configLocation" value="/WEB-INF/velocity.properties"/>
         <!-- velocity模板路径 -->  
-        <property name="resourceLoaderPath" value="/WEB-INF/classes/"/>
+        <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>
         <property name="velocityProperties">    
 	        <props>    
 	            <prop  key="input.encoding">UTF-8</prop>

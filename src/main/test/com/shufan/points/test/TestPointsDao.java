@@ -10,7 +10,6 @@ import java.util.Properties;
 import com.shufan.points.common.ContextListener;
 import com.shufan.points.dao.PointsDao;
 import com.shufan.points.dao.PointsDaoFactory;
-import com.shufan.points.dao.impl.HaploidPointsDaoImpl;
 
 public class TestPointsDao {
 
@@ -31,9 +30,7 @@ public class TestPointsDao {
 	}
 
 	private static void test() {
-		PointsDaoFactory factory = PointsDaoFactory.getInstance();
-		factory.setPointsDao(new HaploidPointsDaoImpl());
-		PointsDao dao = factory.getPointsDao();
+		PointsDao dao = PointsDaoFactory.createPointsDao(null);
 		String userId = "1";
 		IDBRecord orderForm = new DBRecord();
 		orderForm.set("IMAGE", "http://asearch.alicdn.com/bao/uploaded/i4/19371069281480333/TB2tHmpaVXXXXajXXXXXXXXXXXX_!!26159371-0-saturn_solar.jpg_230x230.jpg_.webp");

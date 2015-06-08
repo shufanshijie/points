@@ -5,7 +5,6 @@ import haiyan.cache.RedisStringDataCacheRemote;
 import haiyan.common.DebugUtil;
 import haiyan.common.LogUtil;
 import haiyan.common.PropUtil;
-import haiyan.common.StringUtil;
 import haiyan.common.VarUtil;
 import haiyan.common.cache.AppDataCache;
 import haiyan.common.intf.ILogger;
@@ -70,10 +69,7 @@ public class ContextListener implements ServletContextListener {
 		if (USE_CACHE) {
 //			cache = new RedisBinaryDataCacheRemote();
 			cache = new RedisStringDataCacheRemote();//此缓存存取都是string
-			String servers = PropUtil.getProperty("cache.servers");
-			if (StringUtil.isEmpty(servers)) { // @deprecated 兼容老配置
-				servers = PropUtil.getProperty("REDISCACHE.SERVERS");
-			}
+			String servers = PropUtil.getProperty("REDISCACHE.SERVERS");
 			cache.setServers(servers.split(";"));
 	    	try {
 	    		cache.initialize();

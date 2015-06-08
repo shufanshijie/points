@@ -2,7 +2,6 @@ package com.shufan.points.dao.impl;
 
 import haiyan.common.intf.database.orm.IDBRecord;
 
-import com.shufan.points.dao.AbstractPointsDaoImpl;
 
 /**
  * 双倍积分策略dao实现
