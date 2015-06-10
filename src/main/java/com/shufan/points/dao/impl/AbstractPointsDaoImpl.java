@@ -155,7 +155,7 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 				IDBRecord record = dbm.createRecord();
 				String orderFormImg = orderForm.get("IMAGE").toString();
 				String pointsTitle = orderForm.get("NAME").toString();
-				String pointsType = computePointsType(orderForm,"购物抵现"); 
+				String pointsType = orderForm.get("POINTSTYPE").toString(); 
 				String orderFormId = orderForm.get("ID").toString();
 				record.set("POINTSIMG", orderFormImg);
 				record.set("POINTSTITLE", pointsTitle);
@@ -195,7 +195,7 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 				IDBRecord record = dbm.createRecord();
 				String orderFormImg = orderForm.get("IMAGE").toString();
 				String pointsTitle = orderForm.get("NAME").toString();
-				String pointsType = computePointsType(orderForm,"购物送积分"); 
+				String pointsType = orderForm.get("POINTSTYPE").toString(); 
 				String orderFormId = orderForm.get("ID").toString();
 				record.set("POINTSIMG", orderFormImg);
 				record.set("POINTSTITLE", pointsTitle);
@@ -219,13 +219,6 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 			CloseUtil.close(dbm);
 			CloseUtil.close(context);
 		}
-	}
-	//TODO 计算积分类型
-	private String computePointsType(IDBRecord orderForm,String defaultType) {
-		Object obj = orderForm.get("POINTSREASON");
-		if(obj == null)
-			return defaultType;
-		return obj.toString();
 	}
 	/**
 	 * 根据订单计算积分

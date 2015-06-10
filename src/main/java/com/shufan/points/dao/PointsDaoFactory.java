@@ -2,6 +2,7 @@ package com.shufan.points.dao;
 
 import haiyan.common.PropUtil;
 import haiyan.common.StringUtil;
+import haiyan.common.exception.Warning;
 import haiyan.common.intf.session.IContext;
 
 import java.lang.reflect.Constructor;
@@ -30,8 +31,7 @@ public class PointsDaoFactory {
 			Constructor<PointsDao> constructor = daoClass.getConstructor(IContext.class);
 			dao = constructor.newInstance(context);
 		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new Warning(500, e);
 		}
 		return dao;
 	}
