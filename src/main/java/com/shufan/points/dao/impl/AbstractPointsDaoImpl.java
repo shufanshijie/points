@@ -7,11 +7,11 @@ import haiyan.common.intf.database.orm.IDBRecord;
 import haiyan.common.intf.database.orm.IDBResultSet;
 import haiyan.common.intf.session.IContext;
 import haiyan.config.castorgen.Table;
-import haiyan.config.intf.database.ITableDBManager;
-import haiyan.config.intf.session.ITableDBContext;
 import haiyan.config.util.ConfigUtil;
-import haiyan.orm.database.DBContextFactory;
+import haiyan.orm.database.TableDBContextFactory;
 import haiyan.orm.database.sql.SQLDBFilter;
+import haiyan.orm.intf.database.ITableDBManager;
+import haiyan.orm.intf.session.ITableDBContext;
 
 import java.sql.Date;
 
@@ -58,7 +58,7 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 		ITableDBContext context = null;
 		ITableDBManager dbm = null;
 		try {
-			context = DBContextFactory.createDBContext(parentContext);
+			context = TableDBContextFactory.createDBContext(parentContext);
 			dbm = context.getDBM();
 			IDBRecord record = dbm.createRecord();
 			record.set("USERID", userId);
@@ -79,7 +79,7 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 		ITableDBContext context = null;
 		ITableDBManager dbm = null;
 		try {
-			context = DBContextFactory.createDBContext(parentContext);
+			context = TableDBContextFactory.createDBContext(parentContext);
 			dbm = context.getDBM();
 			IDBFilter filter = new SQLDBFilter(" and USERID = ? and POINTS > ? ",new String[]{userId,"0"});
 			IDBResultSet result = dbm.select(context, getPointsDetailTable(), filter, maxPageSize, page);
@@ -99,7 +99,7 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 		ITableDBContext context = null;
 		ITableDBManager dbm = null;
 		try {
-			context = DBContextFactory.createDBContext(parentContext);
+			context = TableDBContextFactory.createDBContext(parentContext);
 			dbm = context.getDBM();
 			IDBFilter filter = new SQLDBFilter(" and USERID = ? and POINTS < ? ",new String[]{userId,"0"});
 			IDBResultSet result = dbm.select(context, getPointsDetailTable(), filter, maxPageSize, page);
@@ -122,7 +122,7 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 		ITableDBContext context = null;
 		ITableDBManager dbm = null;
 		try {
-			context = DBContextFactory.createDBContext(parentContext);
+			context = TableDBContextFactory.createDBContext(parentContext);
 			dbm = context.getDBM();
 			IDBRecord record = dbm.select(context, getTotalPointsTable(), userId);
 			if(record == null){
@@ -147,16 +147,16 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 		ITableDBContext context = null;
 		ITableDBManager dbm = null;
 		try {
-			context = DBContextFactory.createDBContext(parentContext);
+			context = TableDBContextFactory.createDBContext(parentContext);
 			dbm = context.getDBM();
 			int points = computePoints(userId,orderForm);
 			int consumePoints = orderForm.getInteger("CONSUMEPOINTS");
 			if(consumePoints != 0){
 				IDBRecord record = dbm.createRecord();
-				String orderFormImg = orderForm.get("IMAGE").toString();
-				String pointsTitle = orderForm.get("NAME").toString();
-				String pointsType = orderForm.get("POINTSTYPE").toString(); 
-				String orderFormId = orderForm.get("ID").toString();
+				String orderFormImg = (String)orderForm.get("IMAGE");
+				String pointsTitle = (String)orderForm.get("NAME");
+				String pointsType = (String)orderForm.get("POINTSTYPE"); 
+				String orderFormId = (String)orderForm.get("ID");
 				record.set("POINTSIMG", orderFormImg);
 				record.set("POINTSTITLE", pointsTitle);
 				record.set("POINTSTYPE", pointsType);
@@ -188,14 +188,14 @@ public abstract class AbstractPointsDaoImpl implements PointsDao {
 		ITableDBContext context = null;
 		ITableDBManager dbm = null;
 		try {
-			context = DBContextFactory.createDBContext(parentContext);
+			context = TableDBContextFactory.createDBContext(parentContext);
 			dbm = context.getDBM();
 			int points = computePoints(userId,orderForm);
 			if(points != 0){
 				IDBRecord record = dbm.createRecord();
-				String orderFormImg = orderForm.get("IMAGE").toString();
-				String pointsTitle = orderForm.get("NAME").toString();
-				String pointsType = orderForm.get("POINTSTYPE").toString(); 
+				String orderFormImg = (String)orderForm.get("IMAGE");
+				String pointsTitle = (String)orderForm.get("NAME");
+				String pointsType = (String)orderForm.get("POINTSTYPE"); 
 				String orderFormId = orderForm.get("ID").toString();
 				record.set("POINTSIMG", orderFormImg);
 				record.set("POINTSTITLE", pointsTitle);

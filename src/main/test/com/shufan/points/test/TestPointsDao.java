@@ -37,6 +37,7 @@ public class TestPointsDao {
 		orderForm.set("NAME", "面包+牛奶+鸡蛋");
 		orderForm.set("ID", "123");
 		orderForm.set("TOTALPRICE", 10);
+//		orderForm.set("POINTSTYPE", "购物赠送");
 		int points = dao.addPoints(userId, orderForm);
 		System.out.println("##### 本次获得积分 ： "+ points);
 		orderForm.set("ORDERPOINTS", 10);
